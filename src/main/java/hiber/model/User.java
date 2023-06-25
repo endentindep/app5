@@ -1,6 +1,13 @@
 package hiber.model;
 
-import javax.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "users")
@@ -19,8 +26,8 @@ public class User {
 	@Column(name = "email")
 	private String email;
 
-	@OneToOne(mappedBy = "user")
-	@PrimaryKeyJoinColumn
+	@OneToOne
+	@JoinColumn(name = "id")
 	private Car car;
 
 	public User() {
