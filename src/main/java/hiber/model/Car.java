@@ -5,14 +5,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "cars")
 public class Car {
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	@Column
@@ -21,8 +21,13 @@ public class Car {
 	@Column
 	private int series;
 
-	@OneToOne(mappedBy = "car")
-	private User user;
+	public Car() {
+	}
+
+	public Car(String model, int series) {
+		this.model = model;
+		this.series = series;
+	}
 
 	public Long getId() {
 		return id;

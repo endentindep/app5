@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 public class User {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	@Column(name = "name")
@@ -27,16 +27,17 @@ public class User {
 	private String email;
 
 	@OneToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "car_id")
 	private Car car;
 
 	public User() {
 	}
 
-	public User(String firstName, String lastName, String email) {
+	public User(String firstName, String lastName, String email, Car car) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
+		this.car = car;
 	}
 
 	public Long getId() {
@@ -69,5 +70,9 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Long getCar() {
+		return this.car.getId();
 	}
 }
